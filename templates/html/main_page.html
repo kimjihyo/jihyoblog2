@@ -9,14 +9,22 @@
     <link href="https://fonts.googleapis.com/css?family=Mukta|Ranga|Roboto+Slab" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <title>Blog</title>
 </head>
 
 <body>
     <div id="top-nav-bar">
         <span id="main-logo">Jihyo Blog</span>
-        <ul>
+        <img id="menu-icon" src="../imgs/menu_icon.png" alt="menu_icon.png">
+        <ul id="menu">
             <li class="nav-list selected"><a href="">Home</a></li>
+            <li class="nav-list"><a href="archive.html">Archive</a></li>
+            <li class="nav-list"><a href="about.html">About</a></li>
+            <li class="nav-list" id="write-post"><a href="">Write</a></li>
+        </ul>
+        <ul id="dropdown-menu">
+            <li class="nav-list"><a href="">Home</a></li>
             <li class="nav-list"><a href="archive.html">Archive</a></li>
             <li class="nav-list"><a href="about.html">About</a></li>
             <li class="nav-list" id="write-post"><a href="">Write</a></li>
@@ -128,5 +136,7 @@
             <li><a href="admin.html">Admin</a></li>
         </ul>
     </div>
+
+    <script src="../js/meunButton.js"></script>
 </body>
 </html>
