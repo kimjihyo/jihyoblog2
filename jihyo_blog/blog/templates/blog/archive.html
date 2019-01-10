@@ -1,0 +1,32 @@
+{% extends 'blog/main_page.html' %}
+{% load static %}
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'blog/css/archive.css' %}">
+{% endblock %}
+<div id="main-body">
+    <h3 id="tag-list-label">Tags</h3>
+    <ul id="tag-list">
+        <li id="all"><span>All</span></li>
+        {% for tag in all_tags %}
+        <li id="{{tag.name}}" class="tags"><span>{{ tag.name }}</span></li>
+        {% endfor %}
+    </ul>
+    <h2 id="tag-heading">All</h2>
+    <ul id="post-list">
+        {% for post in all_posts %}
+        <li class="posts {{ post.tag }}">
+            <a href="{% url 'blog:detail' post.id %}">
+                <span id="post-title">{{ post.title }}</span>
+                <span id="post-pubdate">{{ post.pub_date }}</span>
+                <span id="post-tag">{{ post.tag }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<script>
+    document.getElementById("nav-archive").className = "nav-list selected";
+</script>
+<script src="{% static 'blog/js/archive.js' %}"></script>
+{% endblock %}

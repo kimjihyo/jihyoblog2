@@ -1,0 +1,54 @@
+{% extends 'blog/main_page.html' %}
+{% load static %}
+{% block content %}
+<div id="main-body">
+{% block css %}
+<link rel="stylesheet" href="{% static 'blog/css/view_article.css' %}">
+{% endblock %}
+    <div id="control">
+        <div id="edit" class="control-button">
+            Edit
+        </div>
+        <div id="delete" class="control-button">
+            Delete
+        </div>
+    </div>
+    <div id="title">
+        {{ post.title }}
+    </div>
+    <div id="pub-date">
+        {{ post.pub_date }}
+    </div>
+    <div id="contents">
+        {{ post.content }}
+    </div>
+    <div id="view-comment"><span>{{ len_of_comments }} Comment{{ len_of_comments|pluralize }}</span></div>
+    <div id="comment-section">
+        <div id="write-comment">
+            <form action="{% url 'blog:leave_comment' post.id %}" method="POST">
+                {% csrf_token %}
+                {% if errormessage %}
+                <p id="errormessage">{{ errormessage }}</p>
+                {% endif %}
+                <input type="text" placeholder="Name" id="comment-write-name" name="comment-write-name">
+                <input type="password" placeholder="Password" id="comment-write-pw" name="comment-write-pw">
+                <textarea id="content" placeholder="Please write a comment" name="content"></textarea>
+                <button type="submit">Post Comment</button>
+            </form>
+        </div>
+        <ul id="comment-list">
+            {% for comment in all_comments %}
+            <li>
+                <ul id="comment">
+                    <li id="comment-writer">{{ comment.name }}</li>
+                    <li id="comment-date">{{ comment.pub_date }}</li>
+                    <li id="comment-edit">Edit</li>
+                    <li id="comment-content">{{ comment.content }}</li>
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<script src="{% static 'blog/js/commentsButton.js' %}"></script>
+{% endblock %}
