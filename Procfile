@@ -1,1 +1,1 @@
-web: gunicorn deployment_practice.wsgi
+web: gunicorn jihyo_blog.wsgi
